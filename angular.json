@@ -143,5 +143,7 @@
       }
     }
   },
-  "defaultProject": "blog"
+  "cli": {
+    "analytics": false
+  }
 }
