@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit
 
     public refreshHeaderHeight(): void
     {
-        console.log(window.innerHeight);
         this.headerHeight = `${window.innerHeight / 2}px`;
     }
 }
