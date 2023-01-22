@@ -1,0 +1,26 @@
+@import 'commonlib/styles/colors';
+@import 'commonlib/styles/fonts';
+@import 'commonlib/styles/theme';
+
+header
+{
+    div
+    {
+        height: 20%;
+        background-color: $primary-blue;
+        @include base-flex(row, center, center, nowrap);
+        h1
+        {
+            width: 50%;
+            @include font-bold;
+            @include font-style(32px, $white, 38px);
+        }
+    }
+
+    img
+    {
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+    }
+}
