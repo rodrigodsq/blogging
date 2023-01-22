@@ -1,0 +1,8 @@
+@import 'commonlib/styles/theme';
+
+.spinner
+{
+    width: 100%;
+    margin: 15% auto 0 auto;
+    @include base-flex(row, center, center, nowrap);
+}
