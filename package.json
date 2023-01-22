@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:blog": "ng serve blog",
+    "start:commonlib": "NODE_OPTIONS='--no-deprecation --max-old-space-size=4096' NG_PERSISTENT_BUILD_CACHE=1 ng build commonlib --watch"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +36,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^13.0.0",
     "typescript": "~4.6.2"
   }
 }
