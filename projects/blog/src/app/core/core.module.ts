@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { CommonlibModule } from 'commonlib';
 import { AdaptersModule } from './adapters/adapters.module';
+import { ApiModule } from './api/api.module';
 import { EffectsModule } from './effects/effects.module';
 import { GuardsModule } from './guards/guards.module';
 import { InterceptorsModule } from './interceptors/interceptors.module';
@@ -19,7 +20,8 @@ import { StoreModule } from './stores/store.module';
         GuardsModule,
         InterceptorsModule,
         EffectsModule,
-        StoreModule
+        StoreModule,
+        ApiModule
     ],
     exports: [ ]
 })
