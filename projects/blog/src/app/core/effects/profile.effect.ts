@@ -1,5 +1,6 @@
 
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -12,8 +13,10 @@ export class ProfileEffect
     loginUser$ = createEffect(() => this.actions$.pipe(
         ofType(loginUser),
         switchMap(({ id }) => this.profileService$.login(id)),
-        map((user) =>
-            user ? loginUserSuccess({user}) : loginUserError({message: 'Login invalido, verifique suas credenciais!'})
+        map((user) => {
+            this.router.navigateByUrl('/home');
+            return user ? loginUserSuccess({user}) : loginUserError({message: 'Login invalido, verifique suas credenciais!'})
+        }
         ),
         catchError(() =>
             of(loginUserError({message: 'Tente novamente em alguns instantes!'}))
@@ -22,7 +25,8 @@ export class ProfileEffect
 
     constructor(
         private readonly actions$: Actions,
-        private readonly profileService$: ProfileService
+        private readonly profileService$: ProfileService,
+        private readonly router: Router
     )
     { }
 }
