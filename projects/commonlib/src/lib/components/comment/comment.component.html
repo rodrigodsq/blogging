@@ -1,4 +1,4 @@
-<section *ngFor="let item of comment">
+<section *ngFor="let item of comment; index as i;">
     <label class="info-user">
         {{ item.author.username }}
         -
@@ -8,16 +8,30 @@
         {{ item.content }}
     </p>
     <nav class="icons">
-        <span title="Compartilhar">
+        <span class="icon" title="Compartilhar">
             <img src="/assets/icons/share.svg">
         </span>
-        <span title="Responder">
+        <span
+            title="Responder"
+            class="icon"
+            [ngClass]="{'icon-selected': showReply && i === currentIndex}"
+            (click)="changeShowReply(i)">
             <img src="/assets/icons/comment.svg">
         </span>
-        <span title="Reportar">
+        <span class="icon" title="Reportar">
             <img src="/assets/icons/flag.svg">
         </span>
     </nav>
+    <div class="reply" *ngIf="showReply && i === currentIndex">
+        <textarea
+            [formControl]="reply"
+            maxlength="250">
+        </textarea>
+        <div class="add" (click)="saveCommentary()">
+            <label>Adicionar</label>
+            <img src="/assets/icons/add-comment.svg">
+        </div>
+    </div>
     <div class="sub-comment" *ngIf="item.response.length">
         <wui-comment [comment]="item.response"></wui-comment>
     </div>

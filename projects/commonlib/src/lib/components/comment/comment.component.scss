@@ -1,11 +1,19 @@
 @import 'commonlib/styles/colors';
 @import 'commonlib/styles/theme';
+@import 'commonlib/styles/fonts';
 
 section
 {
     border-left: 3px solid $primary-orange;
     margin-top: 35px;
     padding-left: 28px;
+
+    img
+    {
+        width: 18px;
+        height: 18px;
+        object-fit: cover;
+    }
 
     .info-user
     {
@@ -24,19 +32,59 @@ section
         gap: 15px;
         margin-top: 10px;
 
-        span
+        .icon
         {
             border: 1px solid $third-grey;
             border-radius: 15px;
             padding: 10px;
             cursor: pointer;
+            opacity: 70%;
             @include base-flex(column, center, center, nowrap);
 
-            img
+            &:hover
             {
-                width: 18px;
-                height: 18px;
-                object-fit: cover;
+                opacity: 100%;
+            }
+        }
+
+        .icon-selected
+        {
+            @extend .icon;
+            background-color: $third-grey;
+            opacity: 100%;
+        }
+    }
+
+    .reply
+    {
+        @include base-flex(column, center, stretch, nowrap);
+        margin: 15px 0;
+        width: 80%;
+        gap: 10px;
+
+        textarea
+        {
+            @include font-regular();
+            height: 100px;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .add
+        {
+            @include base-flex(row, center, center, nowrap);
+            padding: 10px;
+            background-color: $primary-blue;
+            border-radius: 10px;
+            cursor: pointer;
+            align-self: flex-end;
+            gap: 5px;
+
+
+            label
+            {
+                font-size: 12px;
+                cursor: pointer;
             }
         }
     }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommentComponent } from './comment.component';
 
 @NgModule({
@@ -7,7 +8,8 @@ import { CommentComponent } from './comment.component';
         CommentComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule
     ],
     exports: [
         CommentComponent
