@@ -4,3 +4,7 @@
     </div>
     <img src="/assets/images/header-image.jpg">
 </header>
+
+<section class="spinner" *ngIf="loading$ | async">
+    <wui-spinner></wui-spinner>
+</section>

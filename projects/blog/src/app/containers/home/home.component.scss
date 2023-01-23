@@ -24,3 +24,10 @@ header
         object-fit: cover;
     }
 }
+
+.spinner
+{
+    width: 100%;
+    margin: 55px auto 0 auto;
+    @include base-flex(row, center, center, nowrap);
+}

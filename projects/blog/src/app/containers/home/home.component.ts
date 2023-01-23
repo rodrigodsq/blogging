@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PostHomeApi } from '../../core/api/post-home.api';
 
 @Component({
     selector: 'app-home',
@@ -8,12 +10,19 @@ import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angul
 })
 export class HomeComponent implements OnInit
 {
+    public loading$: Observable<boolean> = this.postHomeApi.postHomeLoading$;
+
     public headerHeight: string = '';
 
+    constructor(
+        private readonly postHomeApi: PostHomeApi
+    )
+    { }
 
     public ngOnInit(): void
     {
         this.refreshHeaderHeight();
+        this.postHomeApi.loadPostHome();
     }
 
     @HostListener('window:resize', ['$event'])
