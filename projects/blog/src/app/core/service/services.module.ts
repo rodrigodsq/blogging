@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { PostHomeService } from './post-home.service';
 import { ProfileService } from './profile.service';
 
 @NgModule({
@@ -7,7 +8,8 @@ import { ProfileService } from './profile.service';
         HttpClientModule
     ],
     providers: [
-        ProfileService
+        ProfileService,
+        PostHomeService
     ]
 })
 export class ServicesModule
