@@ -17,7 +17,9 @@
             <img [src]="(home$ | async)?.author?.avatar">
             <div class="profile-info">
                 <span class="name">{{ (home$ | async)?.author?.username }}</span>
-                <span class="date">{{ (home$ | async)?.timestamp | date: 'dd MMM, yyyy' }}</span>
+                <span class="date">
+                    {{ ((home$ | async)?.timestamp | date: "dd 'de' MMM yyyy": '+00:00')?.replace(".", ",") }}
+                </span>
             </div>
         </div>
         <p class="info-content" [innerHTML]="(home$ | async)?.content"></p>

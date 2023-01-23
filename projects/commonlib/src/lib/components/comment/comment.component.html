@@ -1,5 +1,9 @@
 <section *ngFor="let item of comment">
-    <label class="info-user"> {{ item.author.username }} {{ item.timestamp }} </label>
+    <label class="info-user">
+        {{ item.author.username }}
+        -
+        {{ (item.timestamp | date: "dd MMM y, 'às' H'h'mm" : '+00:00')?.replace('.', '') }}
+    </label>
     <p class="content">
         {{ item.content }}
     </p>
