@@ -1,8 +1,10 @@
 import { NgModule, Type } from '@angular/core';
+import { CommentModule } from './comment';
 import { SpinnerModule } from './spinner';
 
 const commonModules: Array<Type<any>> = [
-    SpinnerModule
+    SpinnerModule,
+    CommentModule
 ];
 
 @NgModule({
