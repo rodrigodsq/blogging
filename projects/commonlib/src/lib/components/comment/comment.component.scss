@@ -10,11 +10,35 @@ section
     .info-user
     {
         @include font-style(16px, $primary-blue, 40px);
+        cursor: pointer;
     }
 
     .content
     {
         @include font-style(18px, $black, 40px);
+    }
+
+    .icons
+    {
+        @include base-flex(row, flex-start, center, nowrap);
+        gap: 15px;
+        margin-top: 10px;
+
+        span
+        {
+            border: 1px solid $third-grey;
+            border-radius: 15px;
+            padding: 10px;
+            cursor: pointer;
+            @include base-flex(column, center, center, nowrap);
+
+            img
+            {
+                width: 18px;
+                height: 18px;
+                object-fit: cover;
+            }
+        }
     }
 
     .sub-comment

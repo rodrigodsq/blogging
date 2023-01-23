@@ -3,6 +3,17 @@
     <p class="content">
         {{ item.content }}
     </p>
+    <nav class="icons">
+        <span title="Compartilhar">
+            <img src="/assets/icons/share.svg">
+        </span>
+        <span title="Responder">
+            <img src="/assets/icons/comment.svg">
+        </span>
+        <span title="Reportar">
+            <img src="/assets/icons/flag.svg">
+        </span>
+    </nav>
     <div class="sub-comment" *ngIf="item.response.length">
         <wui-comment [comment]="item.response"></wui-comment>
     </div>
