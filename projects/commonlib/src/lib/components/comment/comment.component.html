@@ -1,1 +1,9 @@
-<!-- template -->
+<section *ngFor="let item of comment">
+    <label class="info-user"> {{ item.author.username }} {{ item.timestamp }} </label>
+    <p class="content">
+        {{ item.content }}
+    </p>
+    <div class="sub-comment" *ngIf="item.response.length">
+        <wui-comment [comment]="item.response"></wui-comment>
+    </div>
+</section>

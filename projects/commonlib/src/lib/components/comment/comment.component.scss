@@ -1,0 +1,24 @@
+@import 'commonlib/styles/colors';
+@import 'commonlib/styles/theme';
+
+section
+{
+    border-left: 3px solid $primary-orange;
+    margin-top: 35px;
+    padding-left: 28px;
+
+    .info-user
+    {
+        @include font-style(16px, $primary-blue, 40px);
+    }
+
+    .content
+    {
+        @include font-style(18px, $black, 40px);
+    }
+
+    .sub-comment
+    {
+        margin-left: 27px;
+    }
+}

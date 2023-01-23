@@ -83,7 +83,16 @@ main
         .info-content
         {
             @include font-style(20px, $black, 40px);
-            margin: 24px 0 9px;
+            margin: 24px 0 40px;
+        }
+
+        .comments
+        {
+            h1
+            {
+                @include font-bold;
+                @include font-style(30px, $black, 35.16px);
+            }
         }
     }
 }

@@ -22,4 +22,10 @@
         </div>
         <p class="info-content" [innerHTML]="(home$ | async)?.content"></p>
     </section>
+
+    <div class="comments" *ngIf="(home$ | async)?.comments">
+        <h1>Comentários</h1>
+        <wui-comment [comment]="(home$ | async)!.comments"></wui-comment>
+    </div>
+
 </main>
