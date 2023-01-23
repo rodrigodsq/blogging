@@ -8,3 +8,18 @@
 <section class="spinner" *ngIf="loading$ | async">
     <wui-spinner></wui-spinner>
 </section>
+
+<main *ngIf="home$ | async">
+    <section class="content">
+        <h1 class="title">{{ (home$ | async)?.title }}</h1>
+        <p class="subtitle">{{ (home$ | async)?.subtitle }}</p>
+        <div class="profile">
+            <img [src]="(home$ | async)?.author?.avatar">
+            <div class="profile-info">
+                <span class="name">{{ (home$ | async)?.author?.username }}</span>
+                <span class="date">{{ (home$ | async)?.timestamp | date: 'dd MMM, yyyy' }}</span>
+            </div>
+        </div>
+        <p class="info-content" [innerHTML]="(home$ | async)?.content"></p>
+    </section>
+</main>
