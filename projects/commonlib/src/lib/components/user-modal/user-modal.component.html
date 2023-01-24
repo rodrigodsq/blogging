@@ -1,6 +1,65 @@
 <ng-container *ngIf="show">
-    <div class="modal">
-      <h1>Show user modal</h1>
-    </div>
+    <main class="modal">
+        <div class="container">
+            <article class="user-info">
+                <section class="profile">
+                    <img class="avatar" [src]="user.avatar">
+                    <div class="group-buttons">
+                        <span class="btn" title="adicionar">
+                            <img src="/assets/icons/add-circle.svg">
+                        </span>
+                        <span class="btn" title="Enviar Mensagem">
+                            <img src="/assets/icons/comment.svg">
+                        </span>
+                        <span class="btn" title="Reportar">
+                            <img src="/assets/icons/flag.svg">
+                        </span>
+                    </div>
+                </section>
+                <section class="details">
+                    <div class="list">
+                        <p> Nome:</p>
+                        <span>{{ user.username}}</span>
+                    </div>
+                    <div class="list">
+                        <p>Data de filiação:</p>
+                        <span>{{ (user.memberSince | date: 'longDate')?.replace('.', '') }}</span>
+                    </div>
+                    <div class="group-friends">
+                        <p> Amigos em comum: </p>
+                        <section class="list">
+                            <section class="friend" *ngFor="let item of user.mutualFriends">
+                                <img [src]="item.avatar">
+                                <p>{{ item.username }}</p>
+                            </section>
+                        </section>
+                    </div>
+                </section>
+            </article>
+
+            <article class="posts">
+                <header>
+                    <h1> Postagens de {{ user.username }}</h1>
+                    <section class="group">
+                        <span>Page {{ sliderIndex + 1}}</span>
+                        <div fxLayoutAlign="center center" class="arrow" (click)="changeSlider(false)">
+                            <img src="https://cdn-icons-png.flaticon.com/128/271/271220.png">
+                        </div>
+                        <div fxLayoutAlign="center center" class="arrow" (click)="changeSlider(true)">
+                            <img src="https://cdn-icons-png.flaticon.com/128/271/271228.png">
+                        </div>
+                    </section>
+                </header>
+
+                <section class="container">
+                    <section class="block" *ngFor="let item of sliderItems[sliderIndex]">
+                        <h1 [title]="item.title">{{ item.title }}</h1>
+                        <h2 [title]="item.subtitle">{{ item.subtitle }}</h2>
+                        <p [innerHTML]="item.content"></p>
+                    </section>
+                </section>
+            </article>
+        </div>
+    </main>
     <div (click)="toggle()" class="overlay"></div>
 </ng-container>
