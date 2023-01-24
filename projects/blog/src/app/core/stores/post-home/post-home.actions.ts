@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { PostHome } from '../../models/post-home';
+import { NewReply, PostHome } from '../../models/post-home';
+import { User } from '../../models/users';
 import { storeTag } from './post-home.store';
 
 export const loadPostHome = createAction(
@@ -17,3 +18,11 @@ export const loadPostHomeError = createAction(
         message: string;
     }>()
 );
+
+export const addCommentReply = createAction(
+    `${storeTag} Add Commentary Reply`,
+    props<{
+        reply: NewReply;
+        userLogged: User;
+    }>()
+)

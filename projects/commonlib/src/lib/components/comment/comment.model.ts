@@ -19,3 +19,9 @@ export interface Comment
     content: string;
     response: Array<Comment>;
 }
+
+export interface NewReply
+{
+    comment: string;
+    combinationId: number;
+}

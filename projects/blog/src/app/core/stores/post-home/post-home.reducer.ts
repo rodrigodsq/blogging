@@ -1,5 +1,6 @@
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
-import { loadPostHome, loadPostHomeError, loadPostHomeSuccess } from './post-home.actions';
+import { AddComment } from '../../adapters/add-comment.adapter';
+import { addCommentReply, loadPostHome, loadPostHomeError, loadPostHomeSuccess } from './post-home.actions';
 import { PostHomeStore } from './post-home.store';
 
 export const initialState: Partial<PostHomeStore> = {
@@ -21,6 +22,11 @@ const reducer: ActionReducer<Partial<PostHomeStore>, Action> = createReducer(
         ...state,
         loading: false,
         error: action.message
+    })),
+    on(addCommentReply, (state, {reply, userLogged}) => ({
+        ...state,
+        loading: true,
+        postHome: state.postHome?.comments ? new AddComment(state.postHome, reply, userLogged).newPostHome : undefined
     })),
 );
 

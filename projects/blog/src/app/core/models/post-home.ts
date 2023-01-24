@@ -40,6 +40,12 @@ export interface PostHome extends RawPost
     comments: Array<CommentTree>
 }
 
+export interface NewReply
+{
+    comment: string;
+    combinationId: number;
+}
+
 
 export const mockPostHome: RawPost = {
     id: 1,

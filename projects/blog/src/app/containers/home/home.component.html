@@ -27,7 +27,10 @@
 
     <div class="comments" *ngIf="(home$ | async)?.comments">
         <h1>Comentários</h1>
-        <wui-comment [comment]="(home$ | async)!.comments"></wui-comment>
+        <wui-comment
+            [comment]="(home$ | async)!.comments"
+            (newReply)="saveReply($event)">
+        </wui-comment>
     </div>
 
 </main>

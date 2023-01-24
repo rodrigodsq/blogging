@@ -1,4 +1,4 @@
-<section *ngFor="let item of comment; index as i;">
+<section *ngFor="let item of comment; index as i; trackBy:trackById;">
     <label class="info-user">
         {{ item.author.username }}
         -
@@ -27,12 +27,12 @@
             [formControl]="reply"
             maxlength="250">
         </textarea>
-        <div class="add" (click)="saveCommentary()">
+        <div class="add" (click)="addReply(item.id)">
             <label>Adicionar</label>
             <img src="/assets/icons/add-comment.svg">
         </div>
     </div>
     <div class="sub-comment" *ngIf="item.response.length">
-        <wui-comment [comment]="item.response"></wui-comment>
+        <wui-comment [comment]="item.response" (newReply)="saveReply($event)"></wui-comment>
     </div>
 </section>

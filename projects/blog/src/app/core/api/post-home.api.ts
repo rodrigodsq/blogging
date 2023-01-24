@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { PostHome } from '../models/post-home';
-import { loadPostHome } from '../stores/post-home/post-home.actions';
+import { NewReply, PostHome } from '../models/post-home';
+import { User } from '../models/users';
+import { addCommentReply, loadPostHome } from '../stores/post-home/post-home.actions';
 import { getPostHome, getPostHomeLoading } from '../stores/post-home/post-home.selectors';
 import { PostHomeStore } from '../stores/post-home/post-home.store';
 
@@ -20,5 +21,16 @@ export class PostHomeApi
     public loadPostHome(): void
     {
         this.store.dispatch(loadPostHome());
+    }
+
+    public addCommentReply(
+        reply: NewReply,
+        userLogged: User
+    ): void
+    {
+        this.store.dispatch(addCommentReply({
+            reply,
+            userLogged
+        }));
     }
 }
