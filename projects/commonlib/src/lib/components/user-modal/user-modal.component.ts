@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { UserDetails } from './user.model';
 
 @Component({
     selector: 'wui-user-modal',
@@ -8,7 +9,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class UserModalComponent
 {
-    public show: boolean = true;
+    public show: boolean = false;
+    public user: UserDetails;
+
+    @Input()
+    public set userDetails(value: UserDetails)
+    {
+        if(!value)
+        {
+            return;
+        }
+
+        this.user = value;
+        this.show = true;
+    }
+
 
     public toggle () {
         this.show = !this.show;

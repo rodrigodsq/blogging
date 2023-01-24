@@ -29,8 +29,11 @@
         <h1>Comentários</h1>
         <wui-comment
             [comment]="(home$ | async)!.comments"
-            (newReply)="saveReply($event)">
+            (newReply)="saveReply($event)"
+            (userSelect)="selectedUser($event)">
         </wui-comment>
     </div>
+
+    <wui-user-modal [userDetails]="userDetails"></wui-user-modal>
 
 </main>

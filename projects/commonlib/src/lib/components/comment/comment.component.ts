@@ -16,6 +16,9 @@ export class CommentComponent
     @Output()
     public newReply: EventEmitter<NewReply> = new EventEmitter();
 
+    @Output()
+    public userSelect: EventEmitter<number> = new EventEmitter();
+
     public showReply: boolean = false;
     public currentIndex: number = 0;
     public reply: FormControl = new FormControl('', Validators.required);
@@ -47,5 +50,10 @@ export class CommentComponent
     public trackById(id: number, item: any): string
     {
         return item.id;
+    }
+
+    public selectUser(userId: number): void
+    {
+        this.userSelect.emit(userId);
     }
 }

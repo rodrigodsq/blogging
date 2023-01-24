@@ -3,7 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { PostHomeApi } from '../../core/api/post-home.api';
 import { ProfileApi } from '../../core/api/profile.api';
 import { NewReply, PostHome } from '../../core/models/post-home';
-import { User } from '../../core/models/users';
+import { User, UserDetails } from '../../core/models/users';
 
 @Component({
     selector: 'app-home',
@@ -16,8 +16,10 @@ export class HomeComponent implements OnInit, OnDestroy
     public loading$: Observable<boolean> = this.postHomeApi.postHomeLoading$;
     public home$: Observable<PostHome> = this.postHomeApi.postHome$;
     public userLogged: User;
+    public usersNetwork: Array<User> = [];
+    public userDetails: UserDetails;
     public headerHeight: string = '';
-    private sub: Subscription;
+    private sub: Subscription = new Subscription();
 
     constructor(
         private readonly postHomeApi: PostHomeApi,
@@ -29,10 +31,16 @@ export class HomeComponent implements OnInit, OnDestroy
     {
         this.refreshHeaderHeight();
         this.postHomeApi.loadPostHome();
-        this.sub = this.profileApi.userLogged$.subscribe(user =>
+
+        this.sub.add(this.profileApi.userLogged$.subscribe(user =>
         {
             this.userLogged = user;
-        })
+        }));
+
+        this.sub.add(this.profileApi.usersNetwork$.subscribe(user =>
+        {
+            this.usersNetwork = user;
+        }));
     }
 
     public ngOnDestroy(): void
@@ -54,5 +62,25 @@ export class HomeComponent implements OnInit, OnDestroy
     public saveReply(reply: NewReply): void
     {
         this.postHomeApi.addCommentReply(reply, this.userLogged)
+    }
+
+    public selectedUser(userId: number): void
+    {
+        const userSelected: User | undefined = this.usersNetwork.find( user => user.id === userId);
+
+       if(userSelected)
+       {
+           const mutualFriends = this.usersNetwork.filter(user => this.userLogged.friendIds.filter(
+               friendId => userSelected.friendIds.some(userId => userId === friendId)
+           ).some(mutual => mutual === user.id))
+
+           this.userDetails = {
+                ...userSelected,
+                mutualFriends
+           }
+           return;
+       }
+
+       alert('Você está selecionando seu proprio perfil!');
     }
 }

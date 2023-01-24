@@ -1,5 +1,5 @@
 <section *ngFor="let item of comment; index as i; trackBy:trackById;">
-    <label class="info-user">
+    <label class="info-user" (click)="selectUser(item.author.id)">
         {{ item.author.username }}
         -
         {{ (item.timestamp | date: "dd MMM y, 'às' H'h'mm" : '+00:00')?.replace('.', '') }}
@@ -33,6 +33,10 @@
         </div>
     </div>
     <div class="sub-comment" *ngIf="item.response.length">
-        <wui-comment [comment]="item.response" (newReply)="saveReply($event)"></wui-comment>
+        <wui-comment
+            [comment]="item.response"
+            (newReply)="saveReply($event)"
+            (userSelect)="selectUser($event)">
+        </wui-comment>
     </div>
 </section>

@@ -16,6 +16,12 @@ export interface Posts
     content: string;
 }
 
+export interface UserDetails extends User
+{
+    mutualFriends: Array<User>;
+}
+
+
 export const usersMock: Array<User> = [
     {
         id: 1,
