@@ -25,7 +25,6 @@ const reducer: ActionReducer<Partial<PostHomeStore>, Action> = createReducer(
     })),
     on(addCommentReply, (state, {reply, userLogged}) => ({
         ...state,
-        loading: true,
         postHome: state.postHome?.comments ? new AddComment(state.postHome, reply, userLogged).newPostHome : undefined
     })),
 );
