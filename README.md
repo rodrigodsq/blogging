@@ -4,10 +4,10 @@
 
 A ideia inicial é desenvolver uma aplicação SPA que simula uma postagem de um blog, onde inicialmente simulamos um usuario ja logado no blog e o mesmo pode fazer comentarios aninhandos e verificar os detalhes do perfil de cada pessoa que comentou atraves de um modal.
 
-<br><br>
+<br>
 
 * Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 15.1.1
-<br><br>
+<br>
 
 # 🛠️ Tecnologias
 
@@ -78,7 +78,7 @@ Exemplo de executar a commonlib:
 
 ```bash
 # in Folder to Project
-$ npm start --open
+$ npm run start:commonlib
 ```
 
 Exemplo com a flag:
