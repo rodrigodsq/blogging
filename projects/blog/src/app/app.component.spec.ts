@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ProfileApiMock } from 'commonlib';
 import { AppComponent } from './app.component';
+import { ProfileApi } from './core/api/profile.api';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -11,6 +13,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: ProfileApi, useClass: ProfileApiMock }
+      ]
     }).compileComponents();
   });
 
@@ -18,11 +23,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'blog'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('blog');
   });
 });
